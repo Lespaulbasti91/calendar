@@ -1,22 +1,16 @@
 const path = require('path');
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 
 module.exports = {
 
     entry: "./src/js/index.js",
 
-    output: {
-        // options related to how webpack emits results
-        path: path.resolve(__dirname, "public"), // string
-        // the target directory for all output files
-        // must be an absolute path (use the Node.js path module)
-        filename: "bundle.js", // string    // the filename template for entry chunks
-        publicPath: "./src/assets/", // string    // the url to the output directory resolved relative to the HTML page
-    },
-
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader"
@@ -27,5 +21,16 @@ module.exports = {
                 use:['style-loader','css-loader', 'sass-loader']
             }
         ]
-    }
+    },
+
+    plugins: [
+        new HtmlWebPackPlugin({
+            template: "./src/index.html",
+            filename: "./index.html"
+        }),
+        new MiniCssExtractPlugin({
+            filename: "./css/[name].css",
+            chunkFilename: "./css/[id].css"
+        })
+    ]
 };
