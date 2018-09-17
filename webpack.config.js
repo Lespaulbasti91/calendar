@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
 
-    entry: "./src/js/index.js",
+    entry: "./src/js/index.jsx",
 
     module: {
         rules: [
@@ -19,7 +19,7 @@ module.exports = {
             {
                 test:/\.(s*)css$/,
                 use:['style-loader','css-loader', 'sass-loader']
-            }
+            },
         ]
     },
 
