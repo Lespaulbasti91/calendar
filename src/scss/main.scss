@@ -26,3 +26,28 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+// Calendar
+.week-component{
+  display: flex;
+  flex-wrap: nowrap;
+  .weeknumber, .week{
+    flex-grow: 1;
+    flex-basis: 10%;
+    height: 40px;
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+  }
+  .weeknumber{
+    background-color: darkslategrey;
+  }
+  .week{
+    &:nth-child(even){
+      background-color: aqua;
+    }
+    &:nth-child(odd){
+      background-color: cadetblue;
+    }
+  }
+}

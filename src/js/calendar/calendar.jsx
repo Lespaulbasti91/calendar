@@ -13,18 +13,17 @@ class Calendar extends React.Component {
     const { today } = this.state;
     const format = 'YYYY.MM.DD';
     const startday = moment(today, format);
-    const startWeek = startday.startOf('month').format('w YYYY');
+    const startWeek = startday.startOf('month').week();
 
     const weeksInMonth = moment(moment(startday).endOf('month') - moment(startday).startOf('month')).weeks();
 
     const calendar = [];
     for (let i = 0; i < weeksInMonth; i++) {
       let week = moment(startWeek, 'w YYYY').add(i, 'week');
-      week = moment(week).format('w');
+      week = moment(week).week();
 
-      const startdayWeek = moment(week, 'w YYYY').weekday(1).format(format);
+      const startdayWeek = moment().week(week).format(format);
 
-      console.log(startdayWeek);
       calendar.push({
         week: week,
         days: Array(7).fill(0).map((n, j) => moment(startdayWeek, format).clone()
@@ -32,14 +31,16 @@ class Calendar extends React.Component {
       });
     }
 
-    console.log(calendar);
-
     return (
       <div>
-        {calendar.map((item, key) =>
-          <div key={key}>
-            {item.week}
-            {item.days.map((day, index) => <div key={index}>{day}</div>)}
+        {calendar.map(item =>
+          <div className="week-component" key={item}>
+            <div className="weeknumber">{item.week}</div>
+            {item.days.map(day =>
+            <div className="week" key={day}>
+              {moment(day).format('DD')}
+            </div>,
+            )}
           </div>)}
         <div></div>
       </div>
