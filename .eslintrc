@@ -2,6 +2,9 @@
   "extends": "airbnb",
   "rules": {
     "linebreak-style": 0,
-    "allowForLoopAfterthoughts": true
+    "allowForLoopAfterthoughts": true,
+    "react/prefer-stateless-function": false,
+    "arrow-parens": 0,
+    "no-tabs":"off"
   }
 }

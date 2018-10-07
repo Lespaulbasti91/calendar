@@ -1,22 +1,16 @@
 import React, { Component } from 'react';
 
-import style from './../scss/main.scss';
-import Calendar from './calendar/calendar.jsx';
+import style from '../scss/main.scss';
+import Calendar from './calendar/calendar';
+import DragAndDrop from './draganddrop/draganddrop';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome the Weekview Calendar</h1>
-        </header>
-        <div>
-          <Calendar />
-        </div>
-      </div>
-
-    );
-  }
-}
+const App = () => {
+  return (
+    <div className="App">
+      <DragAndDrop />
+      <Calendar />
+    </div>
+  );
+};
 
 export default App;

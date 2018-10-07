@@ -47,7 +47,8 @@
       background-color: aqua;
     }
     &:nth-child(odd){
-      background-color: cadetblue;
+      background-color: rgb(87, 92, 121);
+      color: white;
     }
   }
 }

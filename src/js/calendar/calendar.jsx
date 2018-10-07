@@ -14,7 +14,7 @@ class Calendar extends React.Component {
     const format = 'YYYY.MM.DD';
     const startday = moment(today, format);
     const startWeek = startday.startOf('month').week();
-
+    
     const weeksInMonth = moment(moment(startday).endOf('month') - moment(startday).startOf('month')).weeks();
 
     const calendar = [];
@@ -33,16 +33,15 @@ class Calendar extends React.Component {
 
     return (
       <div>
-        {calendar.map(item =>
-          <div className="week-component" key={item}>
+        {calendar.map((item, index) =>
+          <div className="week-component" key={index}>
             <div className="weeknumber">{item.week}</div>
-            {item.days.map(day =>
-            <div className="week" key={day}>
+            {item.days.map((day, dayindex) =>
+            <div className="week" key={dayindex}>
               {moment(day).format('DD')}
             </div>,
             )}
           </div>)}
-        <div></div>
       </div>
     );
   }

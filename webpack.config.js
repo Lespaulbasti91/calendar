@@ -24,6 +24,15 @@ module.exports = {
         test: /\.(s*)css$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+            options: { minimize: true },
+          },
+        ],
+      },
     ],
   },
 
@@ -37,4 +46,8 @@ module.exports = {
       chunkFilename: './css/[id].css',
     }),
   ],
+
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
 };
